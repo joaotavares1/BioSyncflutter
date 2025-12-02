@@ -23,9 +23,6 @@ class CadastroPage extends StatelessWidget {
         elevation: 0,
         foregroundColor: Colors
             .white, // Ícone de voltar branco para contrastar com o cabeçalho
-        title: Text('Cadastro',
-            style: GoogleFonts.interTight(color: Colors.white)),
-        centerTitle: true,
       ),
       // NOVO: Adiciona a propriedade extendBodyBehindAppBar para que o corpo vá até o topo
       extendBodyBehindAppBar: true,
@@ -48,31 +45,29 @@ class CadastroPage extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: SafeArea(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Biosync', // Renomeado para Biosync
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.interTight(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
+                padding: const EdgeInsets.only(top: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 60,
+                      child: Image.asset(
+                        'assets/logo-bio-sync-login.png',
+                        fit: BoxFit.contain,
                       ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Conectando comunidade e sustentabilidade',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(
-                          color: Colors.white70,
-                          fontSize: 14,
-                        ),
+                    ),
+                    const SizedBox(width: 20),
+                    Text(
+                      'Cadastro', // Renomeado para Biosync
+                      style: GoogleFonts.interTight(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 8),
+                  ],
                 ),
               ),
             ),
@@ -122,7 +117,7 @@ class CadastroPage extends StatelessWidget {
                     title: 'Sou Coletor',
                     subtitle: 'Realize coletas e organize sua rota diária',
                     icon: Icons.local_shipping_rounded,
-                    color: Colors.blue,
+                    color: primaryColor,
                     onTap: () {
                       Navigator.pushNamed(context, '/formRegisterCollector');
                     },
@@ -136,7 +131,7 @@ class CadastroPage extends StatelessWidget {
                     title: 'Ponto de Descarte',
                     subtitle: 'Gerencie um ponto de coleta de recicláveis',
                     icon: Icons.location_on_rounded,
-                    color: Colors.orange,
+                    color: primaryColor,
                     onTap: () {
                       Navigator.pushNamed(context, '/formRegisterDisposal');
                     },

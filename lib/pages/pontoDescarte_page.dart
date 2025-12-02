@@ -40,7 +40,6 @@ class PontoDescartePage extends StatefulWidget {
 class _PontoDescartePageState extends State<PontoDescartePage> {
   // Cores do Design
   static const Color primaryGreen = Color(0xFF50E18A);
-  static const Color drawerBackground = Color(0xFF171717);
   static const Color darkText = Color(0xFF333333);
 
   // Controladores
@@ -233,7 +232,7 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
                 _buildModalRow(Icons.access_time, 'Horário:', point.openingHours),
                 const SizedBox(height: 10),
                 _buildModalRow(Icons.info_outline, 'Status:', point.status, 
-                  color: point.status == 'Aberto' ? Colors.green : Colors.orange),
+                  color: point.status == 'Aberto' ? const Color.fromARGB(255, 80, 225, 138) : const Color.fromARGB(255, 221, 139, 15)),
                 const SizedBox(height: 20),
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -289,45 +288,33 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryGreen,
+      backgroundColor: Color.fromARGB(255, 238, 238, 238),
       
       // --- 1. MENU LATERAL ---
       drawer: Drawer(
-        backgroundColor: drawerBackground,
+        backgroundColor: Color.fromARGB(255, 238, 238, 238),
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(color: drawerBackground),
+              decoration: const BoxDecoration(color: primaryGreen),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        width: 40, 
-                        height: 40, 
-                        decoration: BoxDecoration(
-                          color: Colors.white24,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                      SizedBox(
+                        width: 120, 
+                        height: 120, 
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
                           child: Image.asset(
-                            'assets/biosync_logo.png', 
+                            'assets/logo-bio-sync-login.png', 
                             fit: BoxFit.contain, 
                             errorBuilder: (c,e,s) => const Icon(Icons.eco, color: Colors.white)
                           ),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        'BioSync',
-                        style: GoogleFonts.interTight(
-                          color: const Color(0xFFEEEEEE),
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -341,12 +328,12 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
               onTap: () => Navigator.pushReplacementNamed(context, '/home'),
             ),
             Container(
-              color: const Color(0xFF79C5D0).withOpacity(0.2),
+              color: const Color.fromARGB(255, 158, 158, 158).withOpacity(0.2),
               child: _buildDrawerItem(
                 icon: Icons.business_outlined,
                 text: 'Pontos de Descarte',
-                textColor: const Color(0xFF79C5D0),
-                iconColor: const Color(0xFF79C5D0),
+                textColor: Colors.black,
+                iconColor: Colors.black,
                 onTap: () => Navigator.pop(context),
               ),
             ),
@@ -361,9 +348,9 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
 
       // --- 2. APPBAR ---
       appBar: AppBar(
-        backgroundColor: primaryGreen,
+        backgroundColor: const Color.fromARGB(255, 80, 225, 138),
         elevation: 0,
-        iconTheme: const IconThemeData(color: darkText), 
+        iconTheme: const IconThemeData(color: Colors.white), 
         actions: [
           IconButton(
             icon: const Icon(Icons.person_outline),
@@ -377,23 +364,18 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
               child: Column(
                 children: [
                   // A. Barra de Busca
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(25),
-                    ),
+                  SizedBox(
                     child: TextField(
                       controller: _searchController,
                       onChanged: (value) => _applyFilters(), // Filtra ao digitar
+                      style: const TextStyle(color: Colors.black54, fontSize: 16),
                       decoration: const InputDecoration(
                         hintText: 'Buscar pontos de descarte...',
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search, color: Colors.grey),
-                        contentPadding: EdgeInsets.symmetric(vertical: 15),
+                        prefixIcon: Icon(Icons.search),
                       ),
                     ),
                   ),
@@ -477,7 +459,7 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
                 ? Center(
                     child: Text(
                       'Nenhum ponto encontrado.',
-                      style: GoogleFonts.inter(color: Colors.white, fontSize: 16),
+                      style: GoogleFonts.inter(color: Colors.black, fontSize: 16),
                     ),
                   )
                 : ListView.builder(
@@ -504,8 +486,8 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
     required IconData icon,
     required String text,
     required VoidCallback onTap,
-    Color textColor = const Color(0xFFEEEEEE),
-    Color iconColor = const Color(0xFFEEEEEE),
+    Color textColor = Colors.black,
+    Color iconColor = Colors.black,
   }) {
     return ListTile(
       leading: Icon(icon, color: iconColor),
@@ -529,7 +511,6 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
       padding: const EdgeInsets.only(left: 12, right: 4),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         children: [
@@ -537,12 +518,13 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: value,
-                hint: Text(hint, style: const TextStyle(fontSize: 13, color: Colors.grey)),
-                icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
+                hint: Text(hint, style: const TextStyle(fontSize: 14, color: Colors.black54)),
+                icon: const Icon(Icons.arrow_drop_down, color: Colors.black54),
                 isExpanded: true,
+                dropdownColor: Colors.white,
                 items: items.map((item) => DropdownMenuItem(
                   value: item,
-                  child: Text(item, style: GoogleFonts.inter(fontSize: 13)),
+                  child: Text(item, style: GoogleFonts.inter(fontSize: 14, color: Colors.black54)),
                 )).toList(),
                 onChanged: onChanged,
               ),
@@ -606,7 +588,7 @@ class _PontoDescartePageState extends State<PontoDescartePage> {
                     children: [
                       _buildTag(point.category, const Color(0xFF50E18A)),
                       const SizedBox(width: 8),
-                      _buildTag(point.distanceString, Colors.grey.shade400, textColor: Colors.black54),
+                      _buildTag(point.distanceString, Color.fromARGB(255, 217, 217, 217), textColor: Colors.black54),
                       const Spacer(),
                       Row(
                         children: [

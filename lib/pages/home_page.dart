@@ -95,8 +95,16 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Biosync',
-            style: GoogleFonts.interTight(fontWeight: FontWeight.bold)),
+        toolbarHeight: 95,
+        // Logo Biosync
+        title: Container(
+          height: 95,
+          padding: const EdgeInsets.only(top:16),
+          child: Image.asset(
+            'assets/logo-bio-sync-cadastro.png',
+            fit: BoxFit.contain,
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -142,21 +150,21 @@ class _HomePageState extends State<HomePage> {
                       _buildNavCard(
                         label: "Pontos",
                         icon: Icons.location_on,
-                        color: Colors.orange,
+                        color: Colors.white,
                         onTap: () => Navigator.pushNamed(
                             context, PontoDescartePage.routePath),
                       ),
                       _buildNavCard(
                         label: "Agendar",
                         icon: Icons.calendar_month,
-                        color: const Color(0xFF50E18A),
+                        color: Colors.white,
                         onTap: () => Navigator.pushNamed(
                             context, AgendamentoPage.routePath),
                       ),
                       _buildNavCard(
                         label: "Notícias",
                         icon: Icons.newspaper,
-                        color: Colors.blue,
+                        color: Colors.white,
                         onTap: () {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
@@ -276,7 +284,7 @@ class _HomePageState extends State<HomePage> {
         width: 100,
         height: 100,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color.fromARGB(255, 80, 225, 138),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -292,7 +300,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 8),
             Text(label,
                 style: GoogleFonts.inter(
-                    fontSize: 12, fontWeight: FontWeight.bold)),
+                    fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
           ],
         ),
       ),

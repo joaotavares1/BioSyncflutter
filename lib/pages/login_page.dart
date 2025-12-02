@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                 // ... (Seus TÍTULOS e CAMPOS DE TEXTO permanecem iguais) ...
                 // --- TÍTULOS ---
                 const Text(
-                  'Bem-vindo de volta!',
+                  'Bem-vindo!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 32,
@@ -132,6 +132,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 // --- CAMPOS DE TEXTO ---
                 TextFormField(
+                  style: const TextStyle(color: Colors.black54),
                   controller: _emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
@@ -142,6 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
+                  style: const TextStyle(color: Colors.black54),
                   controller: _passwordController,
                   obscureText: !_passwordVisible,
                   decoration: InputDecoration(
@@ -236,31 +238,27 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _socialButton(
-                      icon: Icons.g_mobiledata, // Google
-                      color: const Color(0xFFDB4437),
+                      imagePath: 'assets/google.png',
                       onTap: () {
                         // Implementar Google Sign-In aqui
                         _showSnackBar(
-                            'Google Sign-In em desenvolvimento', Colors.blue);
+                            'Google Sign-In em desenvolvimento', Colors.black87);
                       },
                     ),
                     _socialButton(
-                      icon: Icons.work, // LinkedIn
-                      color: const Color(0xFF0077B5),
+                      imagePath: 'assets/linkedin.png',
                       onTap: () => _showSnackBar(
-                          'LinkedIn Sign-In em desenvolvimento', Colors.blue),
+                          'LinkedIn Sign-In em desenvolvimento', Colors.black87),
                     ),
                     _socialButton(
-                      icon: Icons.code, // Github
-                      color: const Color(0xFF333333),
+                      imagePath: 'assets/github-logo.png',
                       onTap: () => _showSnackBar(
-                          'Github Sign-In em desenvolvimento', Colors.blue),
+                          'Github Sign-In em desenvolvimento', Colors.black87),
                     ),
                     _socialButton(
-                      icon: Icons.camera_alt, // Instagram
-                      color: const Color(0xFFE4405F),
+                      imagePath: 'assets/instagram.png',
                       onTap: () => _showSnackBar(
-                          'Instagram Sign-In em desenvolvimento', Colors.blue),
+                          'Instagram Sign-In em desenvolvimento', Colors.black87),
                     ),
                   ],
                 ),
@@ -301,8 +299,7 @@ class _LoginPageState extends State<LoginPage> {
 
   // Widget auxiliar para criar os botões sociais (permanece igual)
   Widget _socialButton(
-      {required IconData icon,
-      required Color color,
+      {required String imagePath,
       required VoidCallback onTap}) {
     return InkWell(
       onTap: onTap,
@@ -311,12 +308,10 @@ class _LoginPageState extends State<LoginPage> {
         width: 50,
         height: 50,
         decoration: BoxDecoration(
-          color: color,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Center(
-          child: Icon(icon, color: Colors.white, size: 24),
-        ),
+        child: Padding(padding: const EdgeInsets.all(12),
+        child: Image.asset(imagePath, fit: BoxFit.contain, errorBuilder: (context, error, StackTrace) => const Icon(Icons.error, color: Color.fromARGB(255, 255, 0, 0),),)),
       ),
     );
   }

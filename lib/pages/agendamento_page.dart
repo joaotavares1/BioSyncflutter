@@ -41,13 +41,13 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
   Widget build(BuildContext context) {
     // Tema base
     return Scaffold(
-      backgroundColor: const Color(0xFFEEEEEE), // Cor de fundo original
+      backgroundColor: const Color.fromARGB(255, 238, 238, 238), // Cor de fundo original
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(255, 80, 225, 138),
         elevation: 1,
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF333333)),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             if (Navigator.canPop(context)) {
               Navigator.pop(context);
@@ -57,7 +57,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
         title: Text(
           'Agendamento de Coleta',
           style: GoogleFonts.interTight(
-            color: const Color(0xFF333333),
+            color: Colors.white,
             fontWeight: FontWeight.w600,
             fontSize: 20,
           ),
@@ -70,29 +70,11 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
             children: [
               // --- 1. BARRA DE PESQUISA ---
               TextFormField(
+                style: const TextStyle(color: Colors.black54, fontSize: 16),
                 controller: _searchController,
                 decoration: InputDecoration(
                   hintText: 'Pesquisar agendamentos...',
-                  hintStyle: GoogleFonts.inter(
-                    color: Colors.grey,
-                    fontSize: 14,
-                  ),
-                  prefixIcon: const Icon(Icons.search, color: Color(0xFF666666)),
-                  filled: true,
-                  fillColor: Colors.white,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 14),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: Colors.black, width: 1),
-                  ),
+                  prefixIcon: const Icon(Icons.search),
                 ),
               ),
 
@@ -104,7 +86,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: const Color(0xFFCCCCCC)),
+                  border: Border.all(color: Color.fromARGB(255, 217, 217, 217)),
                 ),
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -142,10 +124,10 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: isSelected ? Colors.black : Colors.white,
+                              color: isSelected ? Color.fromARGB(255, 80, 225, 138) : Colors.white,
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(
-                                color: const Color(0xFFDDDDDD),
+                                color: isSelected ? Color.fromARGB(255, 80, 225, 138) : Color(0xFFDDDDDD),
                               ),
                             ),
                             alignment: Alignment.center,
@@ -155,7 +137,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                                 fontWeight: FontWeight.w500,
                                 color: isSelected
                                     ? Colors.white
-                                    : const Color(0xFF333333),
+                                    : Color.fromARGB(255, 150, 150, 150),
                               ),
                             ),
                           ),
@@ -237,7 +219,6 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -261,7 +242,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: const Color(0xFFCCCCCC)),
+                  border: Border.all(color: const Color.fromARGB(255, 217, 217, 217)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
@@ -284,9 +265,8 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                               // Lógica de deletar
                             },
                             icon: const Icon(Icons.delete,
-                                color: Colors.white, size: 18),
+                                color: Colors.black54, size: 18),
                             style: IconButton.styleFrom(
-                              backgroundColor: const Color(0xFFFF5722),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -316,7 +296,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: const Color.fromARGB(96, 0, 0, 0),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         alignment: Alignment.center,
@@ -351,6 +331,8 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
     return DropdownButtonFormField<String>(
       value: value,
       isExpanded: true,
+      dropdownColor: Colors.white,
+      icon: const Icon(Icons.arrow_drop_down, color: Colors.black54),
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
         filled: true,
@@ -361,23 +343,23 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
+          borderSide: const BorderSide(color: Color.fromARGB(255, 217, 217, 217)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Colors.black),
+          borderSide: const BorderSide(color: Color.fromARGB(255, 80, 225, 138)),
         ),
       ),
       hint: Text(
         hint,
-        style: GoogleFonts.inter(color: const Color(0xFF666666), fontSize: 14),
+        style: GoogleFonts.inter(color: Colors.black54, fontSize: 14),
       ),
       items: items.map((item) {
         return DropdownMenuItem(
           value: item,
           child: Text(
             item,
-            style: GoogleFonts.inter(color: const Color(0xFF333333)),
+            style: GoogleFonts.inter(color: Colors.black54, fontSize: 16 ),
           ),
         );
       }).toList(),
@@ -400,7 +382,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
         Text(
           value,
           style: GoogleFonts.inter(
-            color: const Color(0xFF333333),
+            color: Colors.black54,
             fontWeight: FontWeight.w500,
           ),
         ),

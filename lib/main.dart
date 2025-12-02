@@ -40,35 +40,47 @@ class BiosyncApp extends StatelessWidget {
         // Cor Semente (Verde Principal)
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color(0xFF50E18A),
-          primary: const Color(0xFF50E18A),
+          primary: Color.fromARGB(255, 80, 225, 138),
           background: const Color(0xFFEEEEEE),
         ),
         textTheme: GoogleFonts.interTextTheme(),
+        // Tema padrão para botões
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF50E18A),
+            backgroundColor: Color.fromARGB(255, 80, 225, 138),
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
+            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)
           ),
         ),
+        // Tema padrão para formulários
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Colors.white,
+          // Cores de textos
+          hintStyle: const TextStyle(color: Colors.black54, fontSize: 16),
+          labelStyle: const TextStyle(color: Colors.black54, fontSize: 16),
+          floatingLabelStyle: const TextStyle(color: Colors.black54),
+          // Cores de ícones
+          prefixIconColor: Colors.black54,
+          suffixIconColor: Colors.black54,
+          // bordas
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Color(0xFFCCCCCC)),
+            borderSide: const BorderSide(color: Color.fromARGB(255, 217, 217, 217)),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: const BorderSide(color: Color(0xFF50E18A), width: 2),
+            borderSide: const BorderSide(color: Color.fromARGB(255, 80, 225, 138), width: 2),
           ),
+          contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         ),
       ),
 
